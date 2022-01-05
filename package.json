@@ -33,6 +33,10 @@
                 "paths": ["."]
             }
         }
+    },
+    "env": {
+        "browser": true,
+        "node": true
     }
   },
   "browserslist": {
