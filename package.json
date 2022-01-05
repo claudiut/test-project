@@ -22,7 +22,18 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": ["airbnb", "prettier"],
+    "rules": {
+        "prettier/prettier": "error"
+    },
+    "plugins": ["prettier"],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": ["."]
+            }
+        }
+    }
   },
   "browserslist": {
     "production": [
@@ -35,5 +46,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1"
   }
 }
