@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import './Pagination.css';
 import { Button } from 'react-bootstrap';
 
 export default function Pagination({
@@ -13,6 +11,9 @@ export default function Pagination({
   const numberOfPages = Math.ceil(totalSize / pageSize);
   const listOfAllPages = [...Array(numberOfPages).keys()];
 
+  const disablePrev = currentPageNumber < 2;
+  const disableNext = currentPageNumber >= numberOfPages;
+
   const handlePageClick = (newPageNumber, e = null, disable = false) => {
     if (e && disable) {
       e.preventDefault();
@@ -23,11 +24,12 @@ export default function Pagination({
 
   return (
     <ul className="pagination">
-      <li>
+      <li className={`page-item ${disablePrev ? 'disabled' : ''}`}>
         <Button
           variant="link"
+          className="page-link"
           onClick={(e) => {
-            handlePageClick(currentPageNumber - 1, e, currentPageNumber < 2);
+            handlePageClick(currentPageNumber - 1, e, disablePrev);
           }}
         >
           Previous
@@ -37,26 +39,25 @@ export default function Pagination({
         const pageNumber = i + 1;
 
         return (
-          <li key={i}>
+          <li key={i} className="page-item">
             <Button
               variant="link"
               onClick={() => handlePageClick(pageNumber)}
-              className={pageNumber === currentPageNumber ? 'fw-bold' : ''}
+              className={`page-link ${
+                pageNumber === currentPageNumber ? 'fw-bold' : ''
+              }`}
             >
               {pageNumber}
             </Button>
           </li>
         );
       })}
-      <li>
+      <li className={`page-item ${disableNext ? 'disabled' : ''}`}>
         <Button
+          className="page-link"
           variant="link"
           onClick={(e) => {
-            handlePageClick(
-              currentPageNumber + 1,
-              e,
-              currentPageNumber >= numberOfPages
-            );
+            handlePageClick(currentPageNumber + 1, e, disableNext);
           }}
         >
           Next

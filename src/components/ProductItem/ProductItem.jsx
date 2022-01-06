@@ -17,7 +17,7 @@ function ProductItem({ product, addProductToCart }) {
   };
 
   return (
-    <div className="w-100">
+    <div className="w-100 my-4">
       <div>
         <div>
           <h2>{product.name}</h2>

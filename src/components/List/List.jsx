@@ -36,14 +36,16 @@ export default function List(props) {
   return (
     <div>
       <div>{items.map(renderItem)}</div>
-      {paginate && (
-        <Pagination
-          currentPageNumber={currentPageIndex + 1}
-          pageSize={itemsPerPage}
-          totalSize={totalNumberOfItems}
-          onChange={onPageChange}
-        />
-      )}
+      <div className="d-flex justify-content-center">
+        {paginate && (
+          <Pagination
+            currentPageNumber={currentPageIndex + 1}
+            pageSize={itemsPerPage}
+            totalSize={totalNumberOfItems}
+            onChange={onPageChange}
+          />
+        )}
+      </div>
     </div>
   );
 }
