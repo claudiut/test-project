@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Pagination.css';
+import { Button } from 'react-bootstrap';
 
 export default function Pagination({
   currentPageNumber,
@@ -23,37 +24,33 @@ export default function Pagination({
   return (
     <ul className="pagination">
       <li>
-        <button
-          type="button"
-          className="btn btn-link"
+        <Button
+          variant="link"
           onClick={(e) => {
             handlePageClick(currentPageNumber - 1, e, currentPageNumber < 2);
           }}
         >
           Previous
-        </button>
+        </Button>
       </li>
       {listOfAllPages.map((i) => {
         const pageNumber = i + 1;
 
         return (
           <li key={i}>
-            <button
-              type="button"
+            <Button
+              variant="link"
               onClick={() => handlePageClick(pageNumber)}
-              className={`btn btn-link ${
-                pageNumber === currentPageNumber ? 'fw-bold' : ''
-              }`}
+              className={pageNumber === currentPageNumber ? 'fw-bold' : ''}
             >
               {pageNumber}
-            </button>
+            </Button>
           </li>
         );
       })}
       <li>
-        <button
-          type="button"
-          className="btn btn-link"
+        <Button
+          variant="link"
           onClick={(e) => {
             handlePageClick(
               currentPageNumber + 1,
@@ -63,7 +60,7 @@ export default function Pagination({
           }}
         >
           Next
-        </button>
+        </Button>
       </li>
     </ul>
   );

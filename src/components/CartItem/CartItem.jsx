@@ -9,6 +9,7 @@ import { productShape } from 'src/helpers/product';
 import VoucherModal from 'src/components/CartItem/VoucherModal';
 import { voucherShape } from 'src/helpers/voucher';
 import { itemsShape } from 'src/helpers/item';
+import { Button } from 'react-bootstrap';
 
 function CartItem({
   items,
@@ -46,9 +47,9 @@ function CartItem({
         <div className="w-100">
           <strong>{product.name}</strong>
         </div>
-        <button type="button" className="btn btn-danger" onClick={handleRemove}>
+        <Button variant="danger" onClick={handleRemove}>
           Remove
-        </button>
+        </Button>
       </div>
       <div className="d-flex">
         <div>
@@ -87,13 +88,12 @@ function CartItem({
           <div className="d-flex align-items-center">
             {product.canUseDiscountVoucher && (
               <>
-                <button
+                <Button
+                  variant="info"
                   onClick={() => setVoucherModalOpen(true)}
-                  type="button"
-                  className="btn btn-secondary"
                 >
                   Apply Voucher
-                </button>
+                </Button>
                 <VoucherModal
                   items={items}
                   product={product}

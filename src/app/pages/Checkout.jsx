@@ -13,6 +13,7 @@ import {
 } from 'src/features/checkout/slice';
 import { fetchProductsWithIds } from 'src/helpers/product';
 import useFetchVouchersEffect from 'src/hooks/useFetchVouchersEffect';
+import { Button } from 'react-bootstrap';
 
 function Checkout({ setCheckoutCompleted, setBillingInformation }) {
   const cartProductIds = useSelector(selectCartProductIds);
@@ -70,14 +71,14 @@ function Checkout({ setCheckoutCompleted, setBillingInformation }) {
       <h2>Billing Info</h2>
       <BillingForm ref={billingFormRef} />
       <div>
-        <button
+        <Button
           onClick={handleClickNext}
-          type="button"
-          className="btn btn-primary px-4 mt-2 mb-4"
+          variant="primary"
+          className="px-4 mt-2 mb-4"
           disabled={cartProductIds.length === 0}
         >
           Next
-        </button>
+        </Button>
       </div>
     </section>
   );

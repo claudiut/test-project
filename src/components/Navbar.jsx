@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import routes from 'src/app/router/routes';
 import CartMenu from 'src/components/CartMenu';
@@ -10,9 +11,8 @@ export default function Navbar() {
         <span className="navbar-brand" href="#">
           Test Shop
         </span>
-        <button
+        <Button
           className="navbar-toggler"
-          type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarCollapse"
           aria-controls="navbarCollapse"
@@ -20,7 +20,7 @@ export default function Navbar() {
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon" />
-        </button>
+        </Button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul className="navbar-nav me-auto mb-2 mb-md-0">
             <li className="nav-item">

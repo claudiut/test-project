@@ -6,7 +6,7 @@ export default function FormError({ for: fieldName, formInfo }) {
   const { errors, touched } = formInfo;
 
   return (
-    <div className="form-text text-error">
+    <div className="form-text text-danger">
       {errors[fieldName] && touched[fieldName] && (
         <div>{errors[fieldName]}</div>
       )}

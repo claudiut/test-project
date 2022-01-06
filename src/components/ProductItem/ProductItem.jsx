@@ -5,6 +5,7 @@ import './ProductItem.css';
 import { connect } from 'react-redux';
 import { mapCartActionsToProps } from 'src/features/checkout/slice';
 import { productShape } from 'src/helpers/product';
+import { Button } from 'react-bootstrap';
 
 function ProductItem({ product, addProductToCart }) {
   if (!product) {
@@ -33,13 +34,9 @@ function ProductItem({ product, addProductToCart }) {
             <div className="text-center">
               <div className="fs-2">${product.price}</div>
               <div>
-                <button
-                  type="button"
-                  onClick={handleAddtoCart}
-                  className="btn btn-primary"
-                >
+                <Button variant="primary" onClick={handleAddtoCart}>
                   Add to cart
-                </button>
+                </Button>
               </div>
             </div>
             <div className="m-4">{product.shortDescription}</div>
