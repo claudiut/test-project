@@ -16,13 +16,21 @@ export default function List(props) {
   const [totalNumberOfItems, setTotalNumberOfItems] = useState(0);
 
   useEffect(() => {
-    const fetchPageData = async () => {
-      const { items: fetched, total } = await fetchData(props);
-      setItems(fetched);
-      setTotalNumberOfItems(total);
+    const fetchPageData = () => {
+      const promise = fetchData(props);
+
+      promise
+        .then(({ items: fetched, total }) => {
+          setItems(fetched);
+          setTotalNumberOfItems(total);
+        })
+        .catch(() => {});
+
+      return promise.abort;
     };
 
-    fetchPageData();
+    const abort = fetchPageData();
+    return abort;
   }, [fetchData, props]);
 
   return (

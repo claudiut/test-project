@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './ProductItem.css';
 import { connect } from 'react-redux';
-import { mapCartActionsToProps } from 'src/features/cart/slice';
+import { mapCartActionsToProps } from 'src/features/checkout/slice';
 import { productShape } from 'src/helpers/product';
 
 function ProductItem({ product, addProductToCart }) {

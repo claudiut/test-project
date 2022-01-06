@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import routes from 'src/app/router/routes';
-import { selectItemCount } from 'src/features/cart/slice';
+import { selectItemCount } from 'src/features/checkout/slice';
 
 export default function CartMenu() {
   const numberOfItems = useSelector(selectItemCount);

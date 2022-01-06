@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import cartReducer from 'src/features/cart/slice';
+import checkoutReducer from 'src/features/checkout/slice';
 
 export default configureStore({
   reducer: {
-    cart: cartReducer,
+    checkout: checkoutReducer,
   },
 });
