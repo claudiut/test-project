@@ -5,7 +5,6 @@ import ProductItem from 'src/components/ProductItem/ProductItem';
 import { fetchProducts } from 'src/helpers/product';
 
 export default function Products() {
-  // const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
 
   const handlePageChange = (newPageNumber) => {
