@@ -5,5 +5,9 @@ const itemShapeObject = {
   appliedVoucherCode: PropTypes.string,
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const itemsShape = PropTypes.objectOf(PropTypes.shape(itemShapeObject));
+
+export const getVoucherCodesFromItems = (items) =>
+  Object.values(items)
+    .map((i) => i.appliedVoucherCode)
+    .filter((code) => code);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { itemsShape } from 'src/helpers/item';
@@ -8,6 +8,8 @@ import { mapCartActionsToProps } from 'src/features/checkout/slice';
 import { productShape } from 'src/helpers/product';
 
 const defaultVoucherCode = '';
+
+const inputRef = createRef();
 
 function VoucherModal({
   applyProductVoucher,
@@ -50,6 +52,12 @@ function VoucherModal({
     handleSubmitVoucher();
   };
 
+  useEffect(() => {
+    if (show) {
+      inputRef.current.focus();
+    }
+  }, [show]);
+
   return (
     <Modal backdrop="static" show={show} onHide={onHide}>
       <Modal.Header closeButton>
@@ -59,10 +67,12 @@ function VoucherModal({
       <Modal.Body>
         <p>
           <input
+            ref={inputRef}
             className="form-control"
             type="text"
             value={voucherCode}
             onChange={(e) => setVoucherCode(e.target.value)}
+            placeholder="Voucher Code"
           />
         </p>
       </Modal.Body>

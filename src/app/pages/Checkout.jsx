@@ -14,15 +14,13 @@ import {
 import { fetchProductsWithIds } from 'src/helpers/product';
 import useFetchVouchersEffect from 'src/hooks/useFetchVouchersEffect';
 import { Button } from 'react-bootstrap';
+import { getVoucherCodesFromItems } from 'src/helpers/item';
 
 function Checkout({ setCheckoutCompleted, setBillingInformation }) {
   const cartProductIds = useSelector(selectCartProductIds);
   const items = useSelector(selectCartItems);
 
-  const voucherCodes = Object.values(items)
-    .map((i) => i.appliedVoucherCode)
-    .filter((code) => code);
-  const vouchers = useFetchVouchersEffect(voucherCodes);
+  const vouchers = useFetchVouchersEffect(getVoucherCodesFromItems(items));
 
   const billingFormRef = useRef();
 
